@@ -34,6 +34,43 @@ public class Utility extends BaseTest {
         Assert.assertEquals("Not matched with original text", expectedMessage, actualMessage);
 
     }
+    }
+    //This is Select the option by contains text
+    public void selectByContainsTextFromDropDown(By by, int index) {
+        WebElement dropDown = driver.findElement(by);
+        Select select = new Select(dropDown);
+    }
+
+    //*********** Select date
+    public void selectDate(String year, String month, String date) {
+
+
+        clickOnElement(By.xpath("//button[@class='btn btn-default']/i[@class='fa fa-calendar']")); // Opens the date picker
+        while (true) {
+            String monthYear = driver.findElement(By.xpath("//div[@class='datepicker-days']/table/thead/tr/th[@class='picker-switch']")).getText(); // Nov 2022
+            String arr[] = monthYear.split(" ");
+
+            String mon = arr[0];
+            String yer = arr[1];
+
+            if (mon.equalsIgnoreCase(month) && yer.equalsIgnoreCase(year)) {
+                break;
+            } else {
+                clickOnElement(By.xpath("//div[@class='datepicker-days']/table[@class='table-condensed']/thead/tr/th[@class='next']"));
+            }
+        }
+
+        // select date
+        List<WebElement> allDates = driver.findElements(By.xpath("//table[@class='table-condensed']/tbody//tr//td"));
+        for (WebElement dt : allDates) {
+            if (dt.getText().equalsIgnoreCase(date)) {
+                dt.click();
+                break;
+            }
+
+        }
+    }
+    
 //********** Alert Methods *************
 
     //Switch to Alert
