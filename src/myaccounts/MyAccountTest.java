@@ -55,7 +55,7 @@ public class MyAccountTest extends Utility {
         //Enter First Name
         sendTextToElement(By.id("input-firstname"), "john");
         sendTextToElement(By.id("input-lastname"),"til");
-        sendTextToElement(By.id("input-email"),"john11@gmail.com");
+        sendTextToElement(By.id("input-email"),"john101@gmail.com");
         sendTextToElement(By.id("input-telephone"), "9876543213");
         sendTextToElement(By.id("input-password"), "test123");
         sendTextToElement(By.id("input-confirm"), "test123");
@@ -91,22 +91,26 @@ public class MyAccountTest extends Utility {
 
         //4.6 Click on Login button
         clickOnElement(By.xpath("//input[@class='btn btn-primary']"));
-
+        
         //4.7 Verify text “My Account”
-       // verifyText(By.xpath(""),"");
+       verifyText(By.xpath("//h2[text()='My Account']"),"My Account");
 
         //4.8 Clickr on My Account Link.
-        //clickOnElement(By.xpath(""));
+        clickOnElement(By.xpath("//span[text()='My Account']"));
+
 
         //4.9 Call the method “selectMyAccountOptions” method and pass the parameter “Logout”
-
+        verifyText(By.xpath("//h1[text()='Account Logout']"),"Account Logout");
 
         //4.10 Verify the text “Account Logout”
-        //verifyText(By.xpath(""),"");
+        verifyText(By.xpath("//h1[text()='Account Logout']"),"Account Logout");
 
         //4.11 Click on Continue button
-       // clickOnElement(By.xpath(""));
+        clickOnElement(By.xpath("//div[@class='pull-right']/a[text()='Continue']"));
 
+
+
+        
 
     }
 
